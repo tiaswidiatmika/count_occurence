@@ -1,0 +1,27 @@
+/* this a function that will return the count of
+distinct case-insensitive alphabetic characters and numeric digits
+that occur more than once in the input string.
+The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+
+this version store both key and its count of occurence in an object. this code written in javascript
+*/
+
+function duplicateCount(text){
+    var cont = []; // container of both key and its count initialized in an array, but returned as an object instead
+    var occ = 0;
+    text = text.toLowerCase().split('').sort(); // given a string as an argument, splitted per letter
+    cont = text.reduce((all, curr) => {
+            if (curr in all){ // 
+                all[curr]++;
+            }else {
+                all[curr] = 1;
+            }
+          return all;
+        }, {});
+    console.log(cont);
+    
+    for(var val in cont){
+        if (cont[val] >= 2) occ++;
+    }
+    return occ;
+}
