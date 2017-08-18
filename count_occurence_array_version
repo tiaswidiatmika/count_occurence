@@ -1,0 +1,22 @@
+var arr = [2, 2, 2, 2, 2, 4, 5, 5, 5, 9];
+/*
+    count occurence of integer or string, and store it in an associative array
+*/
+function count_occ(arr) {
+    var a = [], prev;
+    
+    arr.sort();
+    for ( var i = 0; i < arr.length; i++ ) {
+        if ( arr[i] !== prev ) { // for the first iteration, prev value is undefined
+            a["'"+arr[i]+"'"] = 1; //if the prev value not same with the arr[i], create arr[i] and assign initial value to 1
+        } else {
+            a["'"+arr[i]+"'"]++; // if the prev value same with the arr[i], increase the value by 1
+        }
+        prev = arr[i]; // for each iteration, replace prev value by the value of arr[i]
+    }
+    
+    return a;
+}
+
+var result = count_occ(arr);
+console.log(result[0]);
